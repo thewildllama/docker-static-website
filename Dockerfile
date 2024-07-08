@@ -42,7 +42,7 @@ WORKDIR /home/static
 # This is only needed in order to set the `-c` argument in this base file
 # and save the developer the need to override the CMD line in case they ever
 # want to use a httpd.conf
-COPY httpd.conf .
+COPY httpd.conf /etc/httpd.conf
 
 # Copy the static website
 # Use the .dockerignore file to control what ends up inside the image!
@@ -50,4 +50,4 @@ COPY httpd.conf .
 # COPY . .
 
 # Run busybox httpd
-CMD ["/busybox-httpd", "-f", "-v", "-p", "3000", "-c", "httpd.conf"]
+CMD ["/busybox-httpd", "-f", "-v", "-p", "3000", "-c", "/etc/httpd.conf"]
